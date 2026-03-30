@@ -1,17 +1,26 @@
 name: Automated API tests using Postman CLI
 
-on: push
+on:
+  push:
+    branches:
+      - main  # Veya senin ana branch ismin neyse (master/main)
 
 jobs:
   automated-api-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+
       - name: Run API tests
         run: |
-          postman collection run "52143054-3c4e7da3-3fee-40bd-a783-7314f8b7d07c" -e "52143054-7e37fe16-281f-42ae-9d14-8956f39ce5a4"
+          postman collection run "52143054-3c4e7da3-3fee-40bd-a783-7314f8b7d07c" \
+          -e "52143054-7e37fe16-281f-42ae-9d14-8956f39ce5a4" \
+          --env-var "base_url=https://jsonplaceholder.typicode.com"
