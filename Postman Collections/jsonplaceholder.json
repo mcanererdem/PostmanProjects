@@ -1,0 +1,848 @@
+{
+	"info": {
+		"_postman_id": "3c4e7da3-3fee-40bd-a783-7314f8b7d07c",
+		"name": "https://jsonplaceholder.typicode.com/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "routes",
+			"item": [
+				{
+					"name": "get",
+					"item": [
+						{
+							"name": "posts",
+							"item": [
+								{
+									"name": "posts_get",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "79c76e2c-8bce-44c1-822c-593cbf4c7c9e",
+												"exec": [
+													"pm.test(\"Response body alanları kontrol\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.be.an('array');",
+													"    jsonData.forEach(function(item) {",
+													"        pm.expect(item).to.have.property('userId');",
+													"        pm.expect(item).to.have.property('id');",
+													"        pm.expect(item).to.have.property('title');",
+													"        pm.expect(item).to.have.property('body');",
+													"    });",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "3650ce80-846a-4a10-9d01-7f88a21ea970",
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "0a2e1abd-de6a-4b37-b7f7-3dc5cfde0b35",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/posts"
+									},
+									"response": []
+								},
+								{
+									"name": "posts_get_path_variable",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "79c76e2c-8bce-44c1-822c-593cbf4c7c9e",
+												"exec": [
+													"pm.test(\"Response body alanları kontrol\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.be.an('array');",
+													"    jsonData.forEach(function(item) {",
+													"        pm.expect(item).to.have.property('postId');",
+													"        pm.expect(item.postId).to.be.equals(1);",
+													"        pm.expect(item).to.have.property('id');",
+													"        pm.expect(item).to.have.property('name');",
+													"        pm.expect(item).to.have.property('email');",
+													"        pm.expect(item).to.have.property('body');",
+													"    });",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "3650ce80-846a-4a10-9d01-7f88a21ea970",
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "12dd8a22-63bc-4a30-b5ab-4ea4391ec5ac",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{base_url}}/posts/1/comments"
+									},
+									"response": []
+								},
+								{
+									"name": "posts_get_query_variable",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "79c76e2c-8bce-44c1-822c-593cbf4c7c9e",
+												"exec": [
+													"pm.test(\"Response body alanları kontrol\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.be.an('array');",
+													"    jsonData.forEach(function(item) {",
+													"        pm.expect(item.postId).to.be.equals(1);",
+													"        pm.expect(item).to.have.property('id');",
+													"        pm.expect(item).to.have.property('name');",
+													"        pm.expect(item).to.have.property('email');",
+													"        pm.expect(item).to.have.property('body');",
+													"    });",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "3650ce80-846a-4a10-9d01-7f88a21ea970",
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "8060b034-f757-4ff0-9dfe-7dc53c05b81c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/posts/1/comments?postId=1",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"posts",
+												"1",
+												"comments"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "9bdf0afa-09c5-42dd-9e9f-79414e2134bb"
+						},
+						{
+							"name": "comments_get",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "38c987b1-bea7-4423-a504-4c009ae4c0c1",
+										"exec": [
+											"pm.test(\"Response body alanları kontrol\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an('array');\r",
+											"    jsonData.forEach(function(item) {\r",
+											"        pm.expect(item).to.have.property('postId');\r",
+											"        pm.expect(item).to.have.property('id');\r",
+											"        pm.expect(item).to.have.property('name');\r",
+											"        pm.expect(item).to.have.property('email');\r",
+											"        pm.expect(item).to.have.property('body');\r",
+											"    });\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "77a7b867-67de-4620-9858-af7ff9e5bdac",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "d22c2c53-7dd8-4d1e-a738-bb7d2325e885",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/comments"
+							},
+							"response": []
+						},
+						{
+							"name": "albums_get",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9675610d-e90e-4eb5-9b54-f508faf759c1",
+										"exec": [
+											"pm.test(\"Response body kontrol\", function() {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"    pm.expect(jsonData.length).to.greaterThan(1);\r",
+											"    jsonData.forEach(function(item) {\r",
+											"        pm.expect(item).to.have.property(\"userId\");\r",
+											"        pm.expect(item).to.have.property(\"id\");\r",
+											"        pm.expect(item).to.have.property(\"title\");\r",
+											"    });\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "abe8520f-7e33-43e3-badf-52d11756926f",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "50e0c75a-ac14-4ad8-9c73-7f90c82e5fe7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/albums"
+							},
+							"response": []
+						},
+						{
+							"name": "photos_get",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9675610d-e90e-4eb5-9b54-f508faf759c1",
+										"exec": [
+											"pm.test(\"Response body kontrol\", function() {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"    pm.expect(jsonData.length).to.greaterThan(1);\r",
+											"    jsonData.forEach(function(item) {\r",
+											"        pm.expect(item).to.have.property(\"albumId\");\r",
+											"        pm.expect(item).to.have.property(\"id\");\r",
+											"        pm.expect(item).to.have.property(\"title\");\r",
+											"        pm.expect(item).to.have.property(\"url\");\r",
+											"        pm.expect(item).to.have.property(\"thumbnailUrl\");\r",
+											"    });\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "abe8520f-7e33-43e3-badf-52d11756926f",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "a19ce64f-959d-49f3-a0bf-ce193ce8212b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/photos"
+							},
+							"response": []
+						},
+						{
+							"name": "todos_get",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9675610d-e90e-4eb5-9b54-f508faf759c1",
+										"exec": [
+											"pm.test(\"Response body kontrol\", function() {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"    pm.expect(jsonData.length).to.greaterThan(1);\r",
+											"    jsonData.forEach(function(item) {\r",
+											"        pm.expect(item).to.have.property(\"userId\");\r",
+											"        pm.expect(item).to.have.property(\"id\");\r",
+											"        pm.expect(item).to.have.property(\"title\");\r",
+											"        pm.expect(item).to.have.property(\"completed\");\r",
+											"    });\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "abe8520f-7e33-43e3-badf-52d11756926f",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "a3b2d6ef-939e-45bf-b159-5b2ce1b85177",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/todos"
+							},
+							"response": []
+						},
+						{
+							"name": "users_get",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9675610d-e90e-4eb5-9b54-f508faf759c1",
+										"exec": [
+											"pm.test(\"Response body kontrol\", function() {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an(\"array\");\r",
+											"    pm.expect(jsonData.length).to.greaterThan(1);\r",
+											"    jsonData.forEach(function(item) {\r",
+											"        pm.expect(item).to.have.property(\"id\");\r",
+											"        pm.expect(item).to.have.property(\"name\");\r",
+											"        pm.expect(item).to.have.property(\"username\");\r",
+											"        pm.expect(item).to.have.property(\"email\");\r",
+											"        pm.expect(item).to.have.property(\"address\");\r",
+											"        pm.expect(item.address).to.have.property(\"street\");\r",
+											"        pm.expect(item.address).to.have.property(\"suite\");\r",
+											"        pm.expect(item.address).to.have.property(\"zipcode\");\r",
+											"        pm.expect(item.address).to.have.property(\"geo\");\r",
+											"        pm.expect(item.address.geo).to.have.property(\"lat\");\r",
+											"        pm.expect(item.address.geo).to.have.property(\"lng\");\r",
+											"        pm.expect(item).to.have.property(\"phone\");\r",
+											"        pm.expect(item).to.have.property(\"website\");\r",
+											"        pm.expect(item).to.have.property(\"company\");\r",
+											"        pm.expect(item.company).to.have.property(\"name\");\r",
+											"        pm.expect(item.company).to.have.property(\"catchPhrase\");\r",
+											"        pm.expect(item.company).to.have.property(\"bs\");\r",
+											"    });\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "abe8520f-7e33-43e3-badf-52d11756926f",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "9dfa6979-68bc-4a95-841c-8586e5815807",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/users"
+							},
+							"response": []
+						}
+					],
+					"id": "b9f8d093-b632-497f-a9cf-fe791398d332",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fd035322-609c-4613-ad88-5baac6fe2997",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d8892e05-636d-4dc7-99d9-42654f993e18",
+								"type": "text/javascript",
+								"requests": {},
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "post",
+					"item": [
+						{
+							"name": "posts_post",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8535df59-b42d-4d84-9772-197aa3c81aeb",
+										"exec": [
+											"pm.test(\"Post body variable check\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.title).to.eql(pm.environment.get(\"posts_post_title\"));\r",
+											"    pm.expect(jsonData.body).to.eql(pm.environment.get(\"posts_post_body\"));\r",
+											"    pm.expect(jsonData.userId).to.eql(parseInt(pm.environment.get(\"posts_post_userId\")));\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f671f459-0145-40a3-b3a5-aec9fe294afb",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "bdc82846-55c6-4c7a-a5f3-60381a06eed0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"{{posts_post_title}}\",\r\n    \"body\": \"{{posts_post_body}}\",\r\n    \"userId\": {{posts_post_userId}}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/posts"
+							},
+							"response": []
+						}
+					],
+					"id": "fecc6ded-80ba-453b-b577-46986d4788c7",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4f893242-4eb0-4357-b618-b34f7fec7871",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "48a4638a-1e8a-4eeb-98be-827460f7fefa",
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									"pm.test(\"Response Status 201\", function() {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "patch",
+					"item": [
+						{
+							"name": "posts_patch",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8535df59-b42d-4d84-9772-197aa3c81aeb",
+										"exec": [
+											"pm.test(\"Patch request body variables check\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.title).to.eql(pm.environment.get(\"posts_patch_newTitle\"));\r",
+											"    pm.expect(jsonData.body).to.eql(pm.environment.get(\"posts_patch_newBody\"));\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f671f459-0145-40a3-b3a5-aec9fe294afb",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "36c19e62-a5b8-4b53-b31b-1eca4a237f44",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"{{posts_patch_newTitle}}\",\r\n    \"body\": \"{{posts_patch_newBody}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/posts/1"
+							},
+							"response": []
+						}
+					],
+					"id": "17d822b2-4ab7-4707-b2b0-70c43fe798d6"
+				},
+				{
+					"name": "delete",
+					"item": [
+						{
+							"name": "posts_delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8535df59-b42d-4d84-9772-197aa3c81aeb",
+										"exec": [
+											"pm.test(\"Delete posts body check\", function(){\r",
+											"    pm.expect(pm.response.json()).to.deep.equal({});\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f671f459-0145-40a3-b3a5-aec9fe294afb",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "65f420e2-3da8-4b81-8eff-7aa18c706057",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/posts/1"
+							},
+							"response": []
+						},
+						{
+							"name": "posts_delete_with_filter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8535df59-b42d-4d84-9772-197aa3c81aeb",
+										"exec": [
+											"pm.test(\"Delete posts body check\", function(){\r",
+											"    pm.expect(pm.response.json()).to.deep.equal({});\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f671f459-0145-40a3-b3a5-aec9fe294afb",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "9f19c146-b30a-453e-a270-7411708d81f5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/posts/1?userId={{posts_post_userId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"posts",
+										"1"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "{{posts_post_userId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "37ca0d98-4d42-4bac-92aa-854260bd2db6"
+				},
+				{
+					"name": "put",
+					"item": [
+						{
+							"name": "posts_put",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8535df59-b42d-4d84-9772-197aa3c81aeb",
+										"exec": [
+											"pm.test(\"Put request body variables check\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.title).to.eql(pm.environment.get(\"posts_post_title\"));\r",
+											"    pm.expect(jsonData.body).to.eql(pm.environment.get(\"posts_post_body\"));\r",
+											"    pm.expect(jsonData.id).to.eql(parseInt(pm.environment.get(\"posts_put_id\")));\r",
+											"    pm.expect(jsonData.userId).to.eql(parseInt(pm.environment.get(\"posts_post_userId\")));\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f671f459-0145-40a3-b3a5-aec9fe294afb",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "b5184109-da86-415d-aaab-bec50bc40535",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": {{posts_put_id}},\r\n    \"title\": \"{{posts_post_title}}\",\r\n    \"body\": \"{{posts_post_body}}\",\r\n    \"userId\": {{posts_post_userId}}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/posts/1"
+							},
+							"response": []
+						}
+					],
+					"id": "c4c29e72-f1e9-465f-accf-f1485a5a3739"
+				}
+			],
+			"id": "ae4c7ccc-b26c-4260-a81b-d415d2ae9438",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "508e1a47-89e6-4668-a3b1-ec0c7cc0f201",
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "789747b4-89e7-4996-b185-0f241a8aa82d",
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							"pm.test(\"Response time is less than 400\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get(\"response_time\")));\r",
+							"});"
+						]
+					}
+				}
+			]
+		}
+	]
+}
